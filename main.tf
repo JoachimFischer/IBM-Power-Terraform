@@ -35,21 +35,23 @@ resource "ibm_pi_volume" "testacc_volume"{
   pi_cloud_instance_id = var.power-instance-id  
 }
 
-
-data "ibm_pi_image" "ds_image" {
-  pi_image_name        = "7200-03-03"
-  pi_cloud_instance_id = var.power-instance-id
-}
-
-
-/*resource "ibm_pi_image" "testacc_image" {
-  pi_image_name       = "7200-03-02"
-  pi_image_id         = data.ibm_pi_image.ds_image.id
-  pi_cloud_instance_id = var.power-instance-id
-}*/
-
 resource "ibm_pi_key" "testacc_sshkey2" {
   pi_key_name          =  "mykey22"
   pi_ssh_key           =  var.sshkeyname
   pi_cloud_instance_id =  var.power-instance-id 
 }
+
+resource "ibm_pi_instance" "power-server" {
+    pi_memory             = "4"
+    pi_processors         = "2"
+    pi_instance_name      = "${var.power-instance-name}"
+    pi_proc_type          = "shared"
+    pi_migratable         = "true"
+    pi_image_id           = "${var.power-image-name}"
+    pi_volume_ids         = []
+    pi_network_ids        = ["<id of the VM's network IDs>"]
+    pi_key_pair_name      = "${var.ssh-keyname}"
+    pi_sys_type           = "s922"
+    pi_replication_policy = "none"
+    pi_replicants         = "1"
+    pi_cloud_instance_id  = var.power-instance-id 
