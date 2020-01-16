@@ -47,6 +47,12 @@ variable "power-image-name" {
 
 variable "power-instance-id" {
   description = "Power Instance associated with the account Get ot by running cmd: ic resource service-instances --long"
+  default = " "
+}
+
+variable "power-network-id" {
+  description = "Power network ID associated with the account Get ot by running cmd: ibmcloud pi networks"
+  default = " " 
 }
 
 variable "instance-count" {
