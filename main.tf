@@ -4,7 +4,7 @@ resource "ibm_pi_volume" "power-server-volume"{
   pi_volume_name       = "power-volume"
   pi_volume_type       = "ssd"
   pi_volume_shareable  = true
-  pi_cloud_instance_id = var.power-instance-id  
+  pi_cloud_instance_id = "${var.power-instance-id}"
 }
 
 resource "ibm_pi_instance" "power-server" {
@@ -14,10 +14,11 @@ resource "ibm_pi_instance" "power-server" {
     pi_proc_type          = "shared"
     pi_migratable         = "true"
     pi_image_id           = "${var.power-image-name}"
-    pi_volume_ids         = []
-    pi_network_ids        = ["<id of the VM's network IDs>"]
-    pi_key_pair_name      = "${var.ssh-keyname}"
+##    pi_volume_ids         = []
+    pi_network_ids        = "${var.power-network-id}"
+##    pi_key_pair_name      = "${var.ssh-keyname}"
     pi_sys_type           = "s922"
     pi_replication_policy = "none"
     pi_replicants         = "1"
-    pi_cloud_instance_id  = var.power-instance-id 
+    pi_cloud_instance_id  = "${var.power-instance-id}"
+  }
