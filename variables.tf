@@ -17,21 +17,12 @@ variable "resource_group" {
 }
 
 #---------------------------------------------------------
-## DEFINE Region and Zones in US-South Dallas or
-## Frankfurt region eu-de
+## DEFINE Region and Zones 
 #---------------------------------------------------------
-# cloud region like eu-de 
-variable "ibmcloud_region" {
-  description = "Region of Power like eu-de"
-  default = "eu-de"
-}
-#---------------------------------------------------------
-## define data center in Region 
-#----------------------------------------------------------
-variable "datacenter" {
-  description = "use  Frankfurt data center2"
-  default = "frankfurt1"
-}
+# this information is not necessary
+# it is defined with service target
+# use cmd: $ibmcloud pi service-list
+# add the information into variable power-instance-id
 
 #---------------------------------------------------------
 ## DEFINE CIDR Blocks for Power in Region
@@ -50,7 +41,8 @@ variable "power-instance-name" {
 }
 
 variable "power-image-name" {
-  description = "Name of the Power image key to be used"
+  description = "Name of the Power image key to be used 7100-05-04 / 7200-03-05"
+  default = "7200-03-03"
 }
 
 variable "power-instance-id" {
@@ -64,6 +56,4 @@ variable "instance-count" {
 #---------------------------------------------------------
 ## DEFINE additional variables
 #---------------------------------------------------------
-variable "ibmcloud_timeout" {
-   default = 300
-}
+variable "ibmcloud_timeout" {}
