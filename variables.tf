@@ -29,45 +29,41 @@ variable "ibmcloud_region" {
 ## define data center in Region 
 #----------------------------------------------------------
 variable "datacenter" {
-  description = "use  FRankfurt data center2"
+  description = "use  Frankfurt data center2"
   default = "frankfurt1"
 }
 
 #---------------------------------------------------------
 ## DEFINE CIDR Blocks for Power in Region
 #---------------------------------------------------------
-variable "vpc-address-prefix" {
-  description = "The VPC address prefix"
+variable "power-address-prefix" {
+  description = "The Power address prefix"
   default = "192.168.1.0/24"
+}
+
+#---------------------------------------------------------
+## DEFINE Power Instance
+#---------------------------------------------------------
+variable "power-instance-name" {
+  description = "Name of Power instance"
+  default = "powertest"
+}
+
+variable "power-image-name" {
+  description = "Name of the Power image key to be used"
+}
+
+variable "power-instance-id" {
+  description = "Power Instance associated with the account"
+}
+
+variable "instance-count" {
+  default = 1
 }
 
 #---------------------------------------------------------
 ## DEFINE additional variables
 #---------------------------------------------------------
-variable "server-name" {
-  default = "servername"
-}
-
-variable "server-count" {
-  default = 1
-}
-
 variable "ibmcloud_timeout" {
    default = 300
-}
-#-------------------- updaten ------------------------
-variable "imagename" {
-  description = "Name of the image key to be used"
-}
-
-variable "powerinstanceid" {
-  description = "Power Instance associated with the account"
-}
-
-variable "instancename" {
-  description = "Name of the instance"
-}
-
-variable "sshkeyname" {
-  description = "Name of the ssh key to be used"
 }
