@@ -54,7 +54,7 @@ variable "power-image-name" {
 }
 
 variable "power-instance-id" {
-  description = "Power Instance associated with the account"
+  description = "Power Instance associated with the account Get ot by running cmd: ic resource service-instances --long"
 }
 
 variable "instance-count" {
