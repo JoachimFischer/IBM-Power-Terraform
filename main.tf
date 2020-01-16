@@ -1,44 +1,10 @@
-data "ibm_pi_tenant" "ds_tenant" {
-  pi_cloud_instance_id = var.power-instance-id
-}
 
-data "ibm_pi_volume" "ds_volume" {
-  pi_volume_name       = "myvol"
-  pi_cloud_instance_id = var.power-instance-id
-}
-
-data "ibm_pi_instance_volumes" "ds_volumes" {
-  pi_instance_name     = "mypi"
-  pi_cloud_instance_id = var.power-instance-id
-}
-
-data "ibm_pi_key" "ds_instance" {
-  pi_key_name          = "mykey"
-  pi_cloud_instance_id = var.power-instance-id
-}
-
-data "ibm_pi_instance" "ds_instance" {
-  pi_instance_name     = "mypi"
-  pi_cloud_instance_id = var.power-instance-id
-}
-
-data "ibm_pi_images" "ds_images" {
-	pi_image_name        = "my_pi_images"  
-	pi_cloud_instance_id = var.power-instance-id
-}
-
-resource "ibm_pi_volume" "testacc_volume"{
-  pi_volume_size       = 20
-  pi_volume_name       = "test-volume22"
+resource "ibm_pi_volume" "power-server-volume"{
+  pi_volume_size       = 10
+  pi_volume_name       = "power-volume"
   pi_volume_type       = "ssd"
   pi_volume_shareable  = true
   pi_cloud_instance_id = var.power-instance-id  
-}
-
-resource "ibm_pi_key" "testacc_sshkey2" {
-  pi_key_name          =  "mykey22"
-  pi_ssh_key           =  var.sshkeyname
-  pi_cloud_instance_id =  var.power-instance-id 
 }
 
 resource "ibm_pi_instance" "power-server" {
